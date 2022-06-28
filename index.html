@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+
+        }
+
+
+        .calculator {
+            margin-top: 50px;
+            width: 400px;
+            height: 600px;
+        }
+
+        .leftSide {
+            width: 300px;
+        }
+
+        .rightSide {
+            width: 100px;
+            margin-left: -2.5px;
+        }
+
+        .display {
+            border: 1px solid black;
+            text-align: right;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-right: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 36px;
+            font-weight: 700;
+            width: 365.5px;
+            margin-left: -2.5px;
+            
+            
+        }
+        #equals {
+            color: white;
+            background-color: rgb(79, 79, 234);
+        }
+
+        button:hover {
+            background-color: rgb(182, 216, 255);
+
+           
+        }
+
+        .buttons {
+            display: flex;
+            width: 400px;
+            align-self: flex-end;
+
+      
+        }
+
+        .number {
+            width: 100px;
+            height: 100px;
+            margin: -2.5px;
+            background-color: white;
+            border: 0.5px solid grey;
+        }
+
+        .NaN {
+            width: 100px;
+            height: 100px;
+            margin: -2.5px;
+            color: blue;
+        }
+
+        #equals:hover {
+            background-color: rgb(182, 216, 255);
+            color: black;
+        }
+
+        #zero {
+            width: 199px;
+
+        }
+
+        #equals, #add {
+            height: 195px;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display">
+            0
+        </div>
+        <div class="buttons">
+            <div class="leftSide">
+                <button id="clear" class="NaN">C</button>
+                <button id="divide" class="NaN">/</button>
+                <button id="multiply" class="NaN">*</button>
+                <button id="7" class="number">7</button>
+                <button id="8" class="number">8</button>
+                <button id="9" class="number">9</button>
+                <button id="4" class="number">4</button>
+                <button id="5" class="number">5</button>
+                <button id="6" class="number">6</button>
+                <button id="1" class="number">1</button>
+                <button id="2" class="number">2</button>
+                <button id="3" class="number">3</button>
+                <button id="zero" class="number">0</button>
+                <button id="dot" class="NaN">.</button>
+            </div>
+            <div class="rightSide">
+                <button id="subtract" class="NaN">-</button>
+                <button id="add" class="NaN">+</button>
+                <button id="equals" class="NaN">=</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+
+    const add = function (x, y) {
+        return x + y;
+    };
+
+
+    const subtract = function (x, y) {
+        return x - y;
+    };
+
+
+
+    const multiply = function (x, y) {
+        return x * y;
+    }
+
+    const divide = function (x, y) {
+        return x / y;
+    }
+
+    const operate = function (a, op, b) {
+        if (op === "+") { return add(a, b) };
+        if (op === "-") { return subtract(a, b) };
+        if (op === "*") { return multiply(a, b) };
+        if (op === "/") { return divide(a, b) };
+
+    }
+
+    console.log(operate(2, "-", 2))
+
+</script>
+
+</html>
