@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -17,8 +17,8 @@
         <div class="buttons">
             <div class="leftSide">
                 <button id="clear" class="NaN">C</button>
-                <button id="divide" class="NaN">/</button>
-                <button id="multiply" class="NaN">*</button>
+                <button id="divide" class="NaN operator">/</button>
+                <button id="multiply" class="NaN operator">*</button>
                 <button id="7" class="number">7</button>
                 <button id="8" class="number">8</button>
                 <button id="9" class="number">9</button>
@@ -32,8 +32,8 @@
                 <button id="dot" class="NaN">.</button>
             </div>
             <div class="rightSide">
-                <button id="subtract" class="NaN">-</button>
-                <button id="add" class="NaN">+</button>
+                <button id="subtract" class="NaN operator">-</button>
+                <button id="add" class="NaN operator">+</button>
                 <button id="equals" class="NaN">=</button>
             </div>
         </div>
@@ -42,6 +42,31 @@
 </body>
 <script>
 
+    let display = document.querySelector(".display");
+    display.innerText = "";
+    let firstOperand = "";
+    let firstOperator = "";
+    let currentValue = "0";
+
+    const numbers = document.querySelectorAll('.number')
+    numbers.forEach(number => {
+        number.addEventListener('click', function () {
+           currentValue = display.innerText += number.innerText;
+
+        })
+
+    })
+
+    const operators = document.querySelectorAll('.operator')
+    // operators.forEach(operator => {
+    //     operator.addEventListener('click', function () {
+    //         return currentValue;
+    //     })
+    // })
+
+    const getDisplay = function() {
+        return display.innerText;
+    }
 
     const add = function (x, y) {
         return x + y;
