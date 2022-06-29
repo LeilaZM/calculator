@@ -50,7 +50,7 @@
     let secondOperand = "";
     let firstOperator = "";
     let secondOperator = "";
-    let inOperation = false;
+    let dotUsed = ""
  
 
     const numbers = document.querySelectorAll('.number')
@@ -67,7 +67,9 @@
     const dot = document.getElementById('dot')
     
     dot.addEventListener('click', function () {
-        displayMain.innerText += dot.innerText;
+      checkForDot();
+      if (dotUsed === false) {displayMain.innerText += dot.innerText}
+      if (dotUsed === true)  {dot.disabled = true}  
     } )
 
     const operators = document.querySelectorAll('.operator')
@@ -88,17 +90,22 @@
 
 
         }
-
+        dot.disabled = false;
       })
     })
 
+   let checkForDot = function () {
+    dotUsed = displayMain.innerText.includes(".");
    
+   }
 
     const equal = document.getElementById('equals')
     equal.addEventListener('click', function(){
+
         a = (firstOperand);
         b = (displayMain.innerText);
         result =  displayMain.innerText = (operate(a, firstOperator, b))
+        dot.disabled = false;
     })
 
     const c = document.getElementById('clear').addEventListener('click', function() {
@@ -107,6 +114,7 @@
     secondOperand = "";
     firstOperator = "";
     secondOperator = "";
+    dot.disabled = false;
     })
 
     const add = function (x, y) {
@@ -134,7 +142,8 @@
         if (op === "+") { return add(a, b) };
         if (op === "-") { return subtract(a, b) };
         if (op === "*") { return multiply(a, b) };
-        if (op === "/") { return divide(a, b) };
+        if (op === "/" && b > 0) { return divide(a, b) };
+        if (op === "/" && b === 0 ) {return "Can't divide by 0"}
 
     }
 
