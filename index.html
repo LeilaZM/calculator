@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="js-file.js" defer></script>
 </head>
 
 <body>
@@ -17,9 +18,9 @@
         </div>
         <div class="keys">
             <div class="leftSide">
-                <button id="clear" class="NaN">C</button>
+                <button id="clear" class="NaN">C/A</button>
+                <button id="backspace" class="NaN">C</button>
                 <button id="divide" class="NaN operator">/</button>
-                <button id="multiply" class="NaN operator">*</button>
                 <button id="7" class="number">7</button>
                 <button id="8" class="number">8</button>
                 <button id="9" class="number">9</button>
@@ -29,10 +30,11 @@
                 <button id="1" class="number">1</button>
                 <button id="2" class="number">2</button>
                 <button id="3" class="number">3</button>
-                <button id="zero" class="number">0</button>
+                <button data-key="96" id="zero" class="number">0</button>
                 <button id="dot" class="NaN">.</button>
             </div>
             <div class="rightSide">
+                <button id="multiply" class="NaN operator">*</button>
                 <button id="subtract" class="NaN operator">-</button>
                 <button id="add" class="NaN operator">+</button>
                 <button id="equals" class="NaN">=</button>
@@ -41,114 +43,6 @@
     </div>
 
 </body>
-<script>
 
-    const displayMain = document.querySelector(".display");
-    const secondaryDisplay = document.querySelector(".secondaryDisplay");
-    displayMain.innerText = "";
-    let firstOperand = "";
-    let secondOperand = "";
-    let firstOperator = "";
-    let secondOperator = "";
-    let dotUsed = ""
- 
-
-    const numbers = document.querySelectorAll('.number')
-
-    numbers.forEach(number => {
-        number.addEventListener('click', function () {
-        displayMain.innerText += number.innerText;
-        secondaryDisplay.innerText = "";
-
-        })
-        
-    })
-
-    const dot = document.getElementById('dot')
-    
-    dot.addEventListener('click', function () {
-      checkForDot();
-      if (dotUsed === false) {displayMain.innerText += dot.innerText}
-      if (dotUsed === true)  {dot.disabled = true}  
-    } )
-
-    const operators = document.querySelectorAll('.operator')
-    operators.forEach(operator => {
-        operator.addEventListener('click', function () {
-        if (firstOperand === "")
-          { firstOperand = displayMain.innerText;
-           firstOperator = operator.innerText;
-           displayMain.innerText = "";}
-        else if (firstOperand !== "")
-           { secondOperand = displayMain.innerText;
-            displayMain.innerText = operate(firstOperand, firstOperator, secondOperand);
-            firstOperand = displayMain.innerText;
-            firstOperator = operator.innerText;
-            displayMain.innerText = "";
-            secondaryDisplay.innerText = firstOperand;
-            console.log(firstOperand)
-
-
-        }
-        dot.disabled = false;
-      })
-    })
-
-   let checkForDot = function () {
-    dotUsed = displayMain.innerText.includes(".");
-   
-   }
-
-    const equal = document.getElementById('equals')
-    equal.addEventListener('click', function(){
-
-        a = (firstOperand);
-        b = (displayMain.innerText);
-        result =  displayMain.innerText = (operate(a, firstOperator, b))
-        dot.disabled = false;
-    })
-
-    const c = document.getElementById('clear').addEventListener('click', function() {
-    displayMain.innerText = "";
-    firstOperand = "";
-    secondOperand = "";
-    firstOperator = "";
-    secondOperator = "";
-    dot.disabled = false;
-    })
-
-    const add = function (x, y) {
-        return x + y;
-    };
-
-
-    const subtract = function (x, y) {
-        return x - y;
-    };
-
-
-
-    const multiply = function (x, y) {
-        return x * y;
-    }
-
-    const divide = function (x, y) {
-        return x / y;
-    }
-
-    const operate = function (a, op, b) {
-        a = Number(a);
-        b = Number(b);
-        if (op === "+") { return add(a, b) };
-        if (op === "-") { return subtract(a, b) };
-        if (op === "*") { return multiply(a, b) };
-        if (op === "/" && b > 0) { return divide(a, b) };
-        if (op === "/" && b === 0 ) {return "Can't divide by 0"}
-
-    }
-
-  
-
-</script>
 
 </html>

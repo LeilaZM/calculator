@@ -34,13 +34,19 @@ body {
     width: 365px;
     height: 45px;
     margin-left: -2.5px;
+    /* overflow: hidden; */
+}
 
-.display {
-    border: 1px solid red;
+.display, 
+.secondaryDisplay {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
+
+   
     
-    
-}
+
 #equals {
     color: white;
     background-color: rgb(79, 79, 234);
@@ -50,6 +56,12 @@ button:hover {
     background-color: rgb(182, 216, 255);
 
    
+}
+
+button:disabled {
+    cursor: not-allowed;
+
+    
 }
 
 .keys {
@@ -66,6 +78,12 @@ button:hover {
     margin: -2.5px;
     background-color: white;
     border: 0.5px solid grey;
+    padding: 0;
+    border-bottom: 0px;
+}
+
+#zero {
+    border-bottom: 0.5px solid grey;
 }
 
 .NaN {
@@ -86,6 +104,6 @@ button:hover {
 
 }
 
-#equals, #add {
+#equals {
     height: 195px;
 }
