@@ -22,7 +22,7 @@ body {
     margin-left: -3px;
 }
 
-.display {
+.display-section {
     border: 1px solid black;
     text-align: right;
     padding-top: 30px;
@@ -32,7 +32,12 @@ body {
     font-size: 36px;
     font-weight: 600;
     width: 365px;
+    height: 45px;
     margin-left: -2.5px;
+
+.display {
+    border: 1px solid red;
+}
     
     
 }
@@ -47,7 +52,7 @@ button:hover {
    
 }
 
-.buttons {
+.keys {
     display: flex;
     width: 400px;
     align-self: flex-end;

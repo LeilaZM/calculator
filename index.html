@@ -11,10 +11,11 @@
 
 <body>
     <div class="calculator">
-        <div class="display">
-            0
+        <div class="display-section">
+            <div class="display"></div>
+            <div class="secondaryDisplay"></div>
         </div>
-        <div class="buttons">
+        <div class="keys">
             <div class="leftSide">
                 <button id="clear" class="NaN">C</button>
                 <button id="divide" class="NaN operator">/</button>
@@ -42,31 +43,71 @@
 </body>
 <script>
 
-    let display = document.querySelector(".display");
-    display.innerText = "";
+    const displayMain = document.querySelector(".display");
+    const secondaryDisplay = document.querySelector(".secondaryDisplay");
+    displayMain.innerText = "";
     let firstOperand = "";
+    let secondOperand = "";
     let firstOperator = "";
-    let currentValue = "0";
+    let secondOperator = "";
+    let inOperation = false;
+ 
 
     const numbers = document.querySelectorAll('.number')
+
     numbers.forEach(number => {
         number.addEventListener('click', function () {
-           currentValue = display.innerText += number.innerText;
+        displayMain.innerText += number.innerText;
+        secondaryDisplay.innerText = "";
 
         })
-
+        
     })
 
-    const operators = document.querySelectorAll('.operator')
-    // operators.forEach(operator => {
-    //     operator.addEventListener('click', function () {
-    //         return currentValue;
-    //     })
-    // })
+    const dot = document.getElementById('dot')
+    
+    dot.addEventListener('click', function () {
+        displayMain.innerText += dot.innerText;
+    } )
 
-    const getDisplay = function() {
-        return display.innerText;
-    }
+    const operators = document.querySelectorAll('.operator')
+    operators.forEach(operator => {
+        operator.addEventListener('click', function () {
+        if (firstOperand === "")
+          { firstOperand = displayMain.innerText;
+           firstOperator = operator.innerText;
+           displayMain.innerText = "";}
+        else if (firstOperand !== "")
+           { secondOperand = displayMain.innerText;
+            displayMain.innerText = operate(firstOperand, firstOperator, secondOperand);
+            firstOperand = displayMain.innerText;
+            firstOperator = operator.innerText;
+            displayMain.innerText = "";
+            secondaryDisplay.innerText = firstOperand;
+            console.log(firstOperand)
+
+
+        }
+
+      })
+    })
+
+   
+
+    const equal = document.getElementById('equals')
+    equal.addEventListener('click', function(){
+        a = (firstOperand);
+        b = (displayMain.innerText);
+        result =  displayMain.innerText = (operate(a, firstOperator, b))
+    })
+
+    const c = document.getElementById('clear').addEventListener('click', function() {
+    displayMain.innerText = "";
+    firstOperand = "";
+    secondOperand = "";
+    firstOperator = "";
+    secondOperator = "";
+    })
 
     const add = function (x, y) {
         return x + y;
@@ -88,6 +129,8 @@
     }
 
     const operate = function (a, op, b) {
+        a = Number(a);
+        b = Number(b);
         if (op === "+") { return add(a, b) };
         if (op === "-") { return subtract(a, b) };
         if (op === "*") { return multiply(a, b) };
@@ -95,7 +138,7 @@
 
     }
 
-    console.log(operate(2, "-", 2))
+  
 
 </script>
 
