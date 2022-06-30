@@ -4,14 +4,13 @@ const numbers = document.querySelectorAll('.number');
 const dot = document.getElementById('dot');
 const operators = document.querySelectorAll('.operator');
 const equal = document.getElementById('equals')
-const clearAll = document.getElementById('clear')
+const clearAll = document.getElementById('clearAll')
 const clear = document.getElementById('backspace')
 
 displayMain.innerText = "";
 let firstOperand = "";
 let secondOperand = "";
 let firstOperator = "";
-let secondOperator = "";
 let dotUsed = "";
 
 
@@ -63,6 +62,10 @@ equal.addEventListener('click', function () {
     b = (displayMain.innerText);
     result = displayMain.innerText = (operate(a, firstOperator, b))
     dot.disabled = false;
+    firstOperand = result;
+    firstOperand = "";
+    secondOperand = "";
+    
 
 })
 
@@ -70,10 +73,10 @@ equal.addEventListener('click', function () {
 
 clearAll.addEventListener('click', function () {
     displayMain.innerText = "";
+    secondaryDisplay.innerText = "";
     firstOperand = "";
     secondOperand = "";
     firstOperator = "";
-    secondOperator = "";
     dot.disabled = false;
 })
 
@@ -117,4 +120,93 @@ const operate = function (a, op, b) {
     if (op === "/" && b === 0) { return "Can't divide by 0" }
 
 }
+
+window.addEventListener('keydown', function(event) {
+
+    if (event.key === "0") {
+        event.preventDefault();
+        this.document.getElementById('zero').click();
+    }
+    if  (event.key === "1") {
+        event.preventDefault();
+        this.document.getElementById('1').click();
+    }
+
+    if  (event.key === "2") {
+        event.preventDefault();
+        this.document.getElementById('2').click();
+    }
+
+    if  (event.key === "3") {
+        event.preventDefault();
+        this.document.getElementById('3').click();
+    }
+    
+    if  (event.key === "4") {
+        event.preventDefault();
+        this.document.getElementById('4').click();
+    }
+
+    if  (event.key === "5") {
+        event.preventDefault();
+        this.document.getElementById('5').click();
+    }
+
+    if  (event.key === "6") {
+        event.preventDefault();
+        this.document.getElementById('6').click();
+    }
+
+    if  (event.key === "7") {
+        event.preventDefault();
+        this.document.getElementById('7').click();
+    }
+
+    if  (event.key === "8") {
+        event.preventDefault();
+        this.document.getElementById('8').click();
+    }
+
+    if  (event.key === "9") {
+        event.preventDefault();
+        this.document.getElementById('9').click();
+    }
+
+    if  (event.key === "Backspace") {
+        event.preventDefault();
+        this.document.getElementById('backspace').click();
+    }
+
+    if  (event.key === ".") {
+        event.preventDefault();
+        this.document.getElementById('dot').click();
+    }
+
+    if  (event.key === "/") {
+        event.preventDefault();
+        this.document.getElementById('divide').click();
+    }
+
+    if  (event.key === "*") {
+        event.preventDefault();
+        this.document.getElementById('multiply').click();
+    }
+
+    if  (event.key === "+") {
+        event.preventDefault();
+        this.document.getElementById('add').click();
+    }
+
+    if  (event.key === "-") {
+        event.preventDefault();
+        this.document.getElementById('subtract').click();
+    }
+
+    if  (event.key === "Enter") {
+        event.preventDefault();
+        this.document.getElementById('equals').click();
+    }
+    
+})
+
 
